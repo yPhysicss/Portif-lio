@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Staff Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -143,9 +144,32 @@
             margin-top: 50px; /* Garantir que o rodapé desça um pouco */
         }
 
+        /* Estilo do contador de visualizações */
+        .view-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .view-counter i {
+            margin-right: 5px;
+        }
+
     </style>
 </head>
 <body>
+    <div class="view-counter">
+        <i class="fas fa-eye"></i> <span id="viewCount">0</span>
+    </div>
+
     <div class="particles">
         <!-- Partículas geradas via JavaScript -->
     </div>
@@ -171,12 +195,8 @@
 
         <div class="contact section">
             <h2>Contact Me</h2>
-            <p>If you'd like to connect with me, feel free to reach out on Discord or use the form below:</p>
+            <p>If you'd like to connect with me, feel free to reach out on Discord:</p>
             <a href="https://discord.com/users/624387287077355521" class="neon-button">Contact on Discord</a>
-            <form action="#" method="POST">
-                <textarea placeholder="Your message..." rows="4" style="width: 100%; padding: 10px; margin-top: 20px;"></textarea>
-                <button type="submit" class="neon-button">Send Message</button>
-            </form>
         </div>
     </div>
 
@@ -214,8 +234,18 @@
             }, 500); // Gerar nova partícula a cada 500ms
         }
 
+        // Função para atualizar o contador de visualizações
+        let viewCount = 0;
+        function updateViewCount() {
+            viewCount++;
+            document.getElementById('viewCount').textContent = viewCount;
+        }
+
         // Chama a função para gerar as partículas ao carregar a página
-        window.onload = generateParticles;
+        window.onload = () => {
+            generateParticles();
+            updateViewCount();
+        };
     </script>
 </body>
 </html>
