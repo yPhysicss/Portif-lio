@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Staff Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #111;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Garantir que o conteúdo ocupe toda a altura */
+        }
+
+        h1, h2, h3 {
+            color: #00fff5;
+        }
+
+        a {
+            color: #ff00c3;
+            text-decoration: none;
+        }
+
+        .container {
+            flex: 1; /* Isso garante que a área de conteúdo ocupe o restante do espaço disponível */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .neon-text {
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        .neon-button {
+            padding: 15px 40px;
+            background: #ff00c3;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .neon-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px 10px rgba(255, 0, 195, 0.6);
+        }
+
+        .experience, .servers, .contact {
+            margin: 50px 0;
+        }
+
+        .section {
+            padding: 30px;
+            margin: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .section:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(even) {
+            animation-delay: 1s;
+        }
+
+        @keyframes neon {
+            0% {
+                text-shadow: 0 0 10px #ff00c3, 0 0 20px #ff00c3, 0 0 30px #ff00c3, 0 0 40px #ff00c3;
+            }
+            100% {
+                text-shadow: 0 0 10px #00fff5, 0 0 20px #00fff5, 0 0 30px #00fff5, 0 0 40px #00fff5;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #00fff5;
+            animation: move 5s infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(calc(100vw - 100%), calc(100vh - 100%));
+            }
+        }
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            background: #222;
+            color: #bbb;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer a {
+            color: #ff00c3;
+        }
+
+        .footer-container {
+            margin-top: 50px; /* Garantir que o rodapé desça um pouco */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <!-- Partículas geradas via JavaScript -->
+    </div>
+    <div class="container">
+        <h1 class="neon-text">My Staff Portfolio</h1>
+
+        <div class="experience section">
+            <h2>Experience</h2>
+            <p>3+ years of experience as a Discord staff member. Managed large servers and helped build community environments.</p>
+        </div>
+
+        <div class="servers section">
+            <h2>Servers I’ve Worked On</h2>
+            <ul>
+                <li>Mod on Anime Dreams Simulator</li>
+                <li>Head Moderator on Anime Island</li>
+                <li>Head Administrator on Ragnarok Battleground</li>
+                <li>Director on Anime Zenkai</li>
+                <li>Community Manager on Ultra Lock</li>
+                <li>And more...</li>
+            </ul>
+        </div>
+
+        <div class="contact section">
+            <h2>Contact Me</h2>
+            <p>If you'd like to connect with me, feel free to reach out on Discord or use the form below:</p>
+            <a href="https://discord.com/users/624387287077355521" class="neon-button">Contact on Discord</a>
+            <form action="#" method="POST">
+                <textarea placeholder="Your message..." rows="4" style="width: 100%; padding: 10px; margin-top: 20px;"></textarea>
+                <button type="submit" class="neon-button">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer">
+            <p>&copy; 2025 All rights reserved. Website by <a href="https://discord.com/users/624387287077355521" target="_blank">yPhysics</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Função para criar partículas com cores e posições aleatórias
+        function generateParticles() {
+            const colors = ['#00fff5', '#ff00c3', '#ffbf00', '#00ff00', '#ff007f'];
+            const particlesContainer = document.querySelector('.particles');
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 10 + 5; // Tamanho aleatório entre 5 e 15px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Posição aleatória da partícula
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.left = `${Math.random() * 100}vw`;
+
+                particlesContainer.appendChild(particle);
+                
+                // Remover a partícula após a animação
+                setTimeout(() => {
+                    particle.remove();
+                }, 5000); // Remover após 5 segundos (duração da animação)
+            }, 500); // Gerar nova partícula a cada 500ms
+        }
+
+        // Chama a função para gerar as partículas ao carregar a página
+        window.onload = generateParticles;
+    </script>
+</body>
+</html>
